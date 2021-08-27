@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 // Why do we have these strings here?
-// we use these strings to pull data from for the passowrd generator. 
+// we use these strings to pull data from for the password generator. 
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = lowercase.toUpperCase();
 var numeric = "0123456789";
@@ -13,14 +13,16 @@ function getRandom(str) {
   // it is going to generate a random number for our password
   var randomIndex = Math.floor(Math.random() * str.length);
   // and here?
+  // this is going to give us a random element from an array
   return str[randomIndex];
 }
 
 // Write password to the #password input
 function writePassword() {
   // What is the difference between return and console log?
-  // 
+  // return will give us something and the console log is just in the console 
   // What happens if we console log our password instead of returning it?
+  // it will just run in the console and not actually give us anything in the web page
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -42,6 +44,7 @@ function generatePassword() {
   }
 
   // What are we doing here?
+  // we are creating the variables to prompt a pop up when generating the password to select all the options for it.
   var useLowercase = confirm("Would you like to use lower case characters?");
   var useUppercase = confirm("Would you like to use upper case characters?");
   var useNumeric = confirm("Would you like to use numeric characters?");
