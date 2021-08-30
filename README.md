@@ -7,10 +7,12 @@
   <li>Images</li>
   <li>Contact/Questions</li>
   </ul>
+  
 # Description 
+
 In this assignment we had to modify some starter code to create an application that would enable employees to generate a random password based on the criteria they select. it will run in a browser and will feature dynamically updated HTML and CSS powered by javascript code. 
 
-#Images
+# Images
 
 Here are some screen shots of what the passowrd generator site looks like:
 
