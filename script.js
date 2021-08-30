@@ -2,6 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 // Why do we have these strings here?
+// we use these strings to pull data from for the password generator. 
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = lowercase.toUpperCase();
 var numeric = "0123456789";
@@ -9,15 +10,19 @@ var special = "!@#$%^&*()_+";
 
 function getRandom(str) {
   // What is going on here?
+  // it is going to generate a random number for our password
   var randomIndex = Math.floor(Math.random() * str.length);
   // and here?
+  // this is going to give us a random element from an array
   return str[randomIndex];
 }
 
 // Write password to the #password input
 function writePassword() {
   // What is the difference between return and console log?
+  // Return will give us something and the console log is just in the console 
   // What happens if we console log our password instead of returning it?
+  // it will just run in the console and not actually give us anything in the web page
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -39,22 +44,36 @@ function generatePassword() {
   }
 
   // What are we doing here?
+  // we are creating the variables to prompt a pop up when generating the password to select all the options for it.
   var useLowercase = confirm("Would you like to use lower case characters?");
   var useUppercase = confirm("Would you like to use upper case characters?");
   var useNumeric = confirm("Would you like to use numeric characters?");
   var useSpecial = confirm("Would you like to use special characters?");
 
-  // Why is this if statement necessary?
+  var pass = "";
+  for (var i = 0; i < length; i++) {
+    if (useLowercase) {
+      pass += getRandom(lowercase);
+    }
+    if (useUppercase) {
+      pass += getRandom(uppercase);
+    }
+    if (useNumeric) {
+      pass += getRandom(numeric);
+    }
+    if (useSpecial) {
+      pass += getRandom(special);
+    }
+  }
+
+  // Why is this if statement necessary? - to prevent the user from going through the prompts and not selecting any of the variables.
   if (!useLowercase && !useUppercase && !useNumeric && !useSpecial) {
     alert("We need at least one option to be chosen.");
     return "";
   }
 
-  // generate the password based off the criteria
-
   // `return` that password
-  return "Avery";
+  return pass.substr(0, length);
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
